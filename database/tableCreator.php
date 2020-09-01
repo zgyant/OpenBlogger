@@ -28,10 +28,5 @@ blog_material LONGTEXT NOT NULL,
         return $create;
     }
 
-    static function getUser(){
-        $userListSql="SELECT * FROM `users`";
-        $retrieve=mysqli_query(Configuration::getConnection(),$userListSql);
-        return $retrieve;
-    }
 
 }

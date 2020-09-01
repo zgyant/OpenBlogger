@@ -1,6 +1,7 @@
 <?php
 require('config/configuration.php');
 require ('database/tableCreator.php');
+session_start();
 /*
 This is the index file for the OpenBlogger. Edit this page to update your blogs homepage.
  */

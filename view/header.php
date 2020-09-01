@@ -1,6 +1,6 @@
 <?php
-$userList=TableCreator::getUser();
-if(mysqli_num_rows($userList)<=0)
+$userList=Configuration::getUser();
+if(mysqli_num_rows($userList)>0)
 {
     $index = new Index("Wizard | Open Source Blog CMS", "blog");
     $mainPage='view/cms/initialSetup.php';
