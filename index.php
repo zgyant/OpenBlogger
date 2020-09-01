@@ -20,38 +20,14 @@ class Index
         $this->blog = $blog_folder;
         $this->blogLocation = $homepage . "/" . $blog_folder;
     }
-
-    function get_title()
-    {
-        return $this->title;
-    }
-
-    function get_blog()
-    {
-        return $this->blog;
-    }
 }
 
-$index = new Index("OpenBlogger | Open Source Blog CMS", "blog");
-?>
-
-<html>
-<head>
-    <title><?= $index->get_title(); ?></title>
-    <?=Configuration::addDependencies();?>
-</head>
-<body>
-<?php
 $userTable=TableCreator::createUserTable();
 $blogTable=TableCreator::createBlogTable();
-$userList=TableCreator::getUser();
-if(mysqli_num_rows($userList)<=0)
-{
+include ('view/header.php');
+include('view/footer.php');
 
-}
-?>
-</body>
-</html>
+
 
 
 
