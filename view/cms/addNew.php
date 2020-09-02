@@ -26,9 +26,10 @@
                 {
                     //window.location.href = "index.php";
                     $("#result").addClass("alert alert-success");
-                    $("#result").html('Blog Posted');
+                    $("#result").html('Blog Posted | Refresh the page to see result');
                     $("#blogTitleField").val('')
                     tinyMCE.activeEditor.setContent('')
+
                 }
             });
         }

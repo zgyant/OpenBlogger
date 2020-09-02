@@ -23,9 +23,10 @@ class Configuration
                 printf("Failed to connect to MySQL: ", mysqli_connect_error());
                 exit();
             }
-            $createDatabase = "CREATE DATABASE IF NOT EXISTS OpenBlogger";
+            $databaseName=$ini_array['database'];
+            $createDatabase = "CREATE DATABASE IF NOT EXISTS '$databaseName'";
             $newConnection->query($createDatabase);
-            $newConnection->select_db("OpenBlogger");
+            $newConnection->select_db($databaseName);
             Configuration::$conn=$newConnection;
             return Configuration::$conn;
         } else {
