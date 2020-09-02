@@ -2,18 +2,22 @@
 global $blogLocation;
 $userList = Configuration::getUser();
 $logout="";
-if (isset($_SESSION['username'])) {
-    $logout="Logout";
-    $index = new Index("Welcome | Open Source Blog CMS");
-    $mainPage = 'view/cms/blogList.php';
-} elseif
-(mysqli_num_rows($userList) <= 0) {
+$blogList='';
+if (mysqli_num_rows($userList) <= 0) {
     $index = new Index("Wizard | Open Source Blog CMS");
     $mainPage = 'view/cms/initialSetup.php';
 } else {
-    $index = new Index("OpenBlogger | Open Source Blog CMS");
-    $mainPage = 'view/cms/login.php';
+    if (isset($_SESSION['username'])) {
+        $logout="Logout";
+        $index = new Index("Welcome | Open Source Blog CMS");
+        $mainPage='view/cms/addNew.php';
+        $blogList = 'view/cms/blogList.php';
+    }elseif(!isset($_SESSION['username'])){
+        $index = new Index("Read My Blogs | Open Source Blog CMS | OpenBlogger");
+        $mainPage = 'view/cms/blogList.php';
+    }
 }
+
 
 ?>
 <html>
@@ -38,6 +42,8 @@ if (isset($_SESSION['username'])) {
     <div class="col" style="margin-top:10%;">
         <?php
         include($mainPage);
+        if(($blogList)!='')
+        include($blogList);
         ?>
     </div>
 </div>

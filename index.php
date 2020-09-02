@@ -1,5 +1,5 @@
 <?php
-require('config/configuration.php');
+require('config/Configuration.php');
 require ('database/tableCreator.php');
 session_start();
 $baseLocation= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .

@@ -1,3 +1,5 @@
+<h1 class="center">Login</h1>
+<br/>
 <form class="login-top" method="post" action="javascript:void(0);">
     <div class="form-group">
         <label for="userNameField">Username</label>
@@ -13,7 +15,7 @@
     $("form").submit(function(){
         $.ajax({
             type: "POST",
-            url: 'controller/actionController.php',
+            url: '../controller/actionController.php',
             data: {
                 username: $("#userNameField").val(),
                 password: $("#passwordField").val(),
@@ -21,7 +23,7 @@
             },
             success: function(data)
             {
-                window.location.href = "index.php";
+                window.location.href = "/OpenBlogger/";
 
             }
         });

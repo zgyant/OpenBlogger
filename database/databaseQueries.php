@@ -1,5 +1,5 @@
 <?php
-require('../config/configuration.php');
+require('../config/Configuration.php');
 session_start();
 class DatabaseQueries extends Configuration
 {
@@ -23,6 +23,13 @@ class DatabaseQueries extends Configuration
         }
 
     }
+    static function newBlog($title,$blogPost)
+    {
+        $query = "INSERT INTO blog (blog_title,blog_material) VALUES ('$title','$blogPost')";
+        $newBlog = mysqli_query(Configuration::setConnection(), $query);
+        return $newBlog;
+    }
+
 
     static function deleteBlog($id)
     {
@@ -33,11 +40,4 @@ class DatabaseQueries extends Configuration
     {
 
     }
-
-    static function selectBlog($numberOfData)
-    {
-
-    }
-
-
 }

@@ -1,5 +1,6 @@
 <?php
 include ('../database/databaseQueries.php');
+
 if ($_REQUEST['buttType'] === 'login') {
     if (($_REQUEST['username'] || $_REQUEST['password'])) {
         DatabaseQueries::loginUser($_REQUEST['username'], $_REQUEST['password']);
@@ -16,5 +17,13 @@ if ($_REQUEST['buttType'] === 'register') {
     }
 }
 
+
+if ($_REQUEST['buttType'] === 'newBlog') {
+    if (($_REQUEST['title'] || $_REQUEST['blogPost'])) {
+        DatabaseQueries::newBlog($_REQUEST['title'], $_REQUEST['blogPost']);
+    } else {
+        return ("../view/cms/login.php?error=valueno");
+    }
+}
 
 
