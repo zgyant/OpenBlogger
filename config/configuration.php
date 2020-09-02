@@ -3,47 +3,33 @@
 This file contains basic configurations.
 Edit this to match your server MySQL details.
 */
-
 class Configuration
 {
     public static $conn;
-
-    static function getUser()
+     static function getUser()
     {
         $userListSql = "SELECT * FROM `users`";
-        $retrieve = mysqli_query(Configuration::getConnection(), $userListSql);
+        $retrieve = mysqli_query(Configuration::$conn, $userListSql);
         return $retrieve;
     }
-
-    static function getConnection()
+    static function setConnection()
     {
-        if (!isset(self::$conn)) {
-            self::$conn = new Configuration();
-        }
-        return self::$conn;
-    }
-
-    static function setConnection($hostname, $username, $password)
-    {
-        if (!self::$conn) {
-            //change below to match your server details, leave default if LOCAL MACHINE
-            $servername = $hostname; //change this to your server address
-            $username = $username; //your mysql username
-            $password = $password; //your mysql password
-
+        $ini_array = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/OpenBlogger/properties.ini");
+        if (!Configuration::$conn) {
             // Create connection
-            self::$conn = new mysqli($servername, $username, $password);
-
-            // Check connection
+            $newConnection = new mysqli($ini_array['hostname'], $ini_array['username'], $ini_array['password']);
+           // Check connection
             if (mysqli_connect_errno()) {
                 printf("Failed to connect to MySQL: ", mysqli_connect_error());
                 exit();
             }
             $createDatabase = "CREATE DATABASE IF NOT EXISTS OpenBlogger";
-            self::$conn->query($createDatabase);
-            self::$conn->select_db("OpenBlogger");
+            $newConnection->query($createDatabase);
+            $newConnection->select_db("OpenBlogger");
+            Configuration::$conn=$newConnection;
+            return Configuration::$conn;
         } else {
-            echo "connecitonc ha";
+            return Configuration::$conn;
         }
     }
 
