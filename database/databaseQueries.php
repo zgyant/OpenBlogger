@@ -33,11 +33,13 @@ class DatabaseQueries extends Configuration
 
     static function deleteBlog($id)
     {
-
+        $query="DELETE FROM `blog` where `id`='$id'";
+        return mysqli_query(Configuration::setConnection(),$query);
     }
 
-    static function update($id, $newData)
+    static function update($id, $title, $blogPost)
     {
-
+        $query="UPDATE `blog` SET `blog_title`='$title' AND `blog_material`='$blogPost' WHERE `id`='$id'";
+        return mysqli_query(Configuration::setConnection(),$query);
     }
 }
