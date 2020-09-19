@@ -4,7 +4,7 @@
  
  How to Run:
  
- Just download the source and upload into your server. After that edit the properties.ini file with your mysql settings.
+ Just download the source and upload into your server. After that edit the properties.ini file with your mysql settings and please change the homepage too.
  Goto: {yourwebsite}/OpenBlogger and finish the setup.
  After that goto {yourwebsite}/OpenBlogger/config/adminPortal.php and login using your username and password.
  
