@@ -11,7 +11,7 @@
 Doesnt Support: Image upload, edit, delete in this version of this CMS.
 
 For more help find me on: http://jmishra.com.np
-
+Want to see it at work?: http://jmishra.com.np/OpenBlogger/
 
 MIT License
 
